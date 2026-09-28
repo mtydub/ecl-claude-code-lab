@@ -1,0 +1,27 @@
+name: lint
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  style:
+    name: ECL style checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the ECL linter
+        run: ./scripts/lint.sh
+      - name: Check the sample data is still well formed
+        run: |
+          for f in data/*.csv; do
+            cols=$(head -1 "$f" | awk -F, '{print NF}')
+            bad=$(awk -F, -v n="$cols" 'NF != n { print NR": "NF" fields" }' "$f")
+            if [ -n "$bad" ]; then
+              echo "$f: expected $cols fields per row"
+              echo "$bad"
+              exit 1
+            fi
+          done
+          echo "data: OK"

@@ -1,0 +1,29 @@
+# HPCC / eclcc build output
+*.eclxml
+*.res.so
+*.so
+*.dll
+eclcc.log
+eclagent.log
+a.out
+generated/
+.eclcc/
+
+# ECL IDE / VS Code
+*.suo
+*.user
+.vscode/*
+!.vscode/extensions.json
+
+# Local client tools config
+.ecl/
+ecl.ini
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Scratch
+/tmp/
+*.tmp
+*.bak

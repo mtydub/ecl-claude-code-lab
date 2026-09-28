@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/lint.sh)",
+      "Bash(./scripts/syntax_check.sh:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)"
+    ]
+  }
+}
